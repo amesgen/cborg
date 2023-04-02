@@ -315,11 +315,11 @@ getDecodeAction (Decoder k) = k (\x -> return (Done x))
 toInt8   :: Int# -> Int8
 toInt16  :: Int# -> Int16
 toInt32  :: Int# -> Int32
-toInt64  :: Int# -> Int64
+toInt64  :: Int64# -> Int64
 toWord8  :: Word# -> Word8
 toWord16 :: Word# -> Word16
 toWord32 :: Word# -> Word32
-toWord64 :: Word# -> Word64
+toWord64 :: Word64# -> Word64
 #if MIN_VERSION_ghc_prim(0,8,0)
 toInt8   n = I8#  (intToInt8# n)
 toInt16  n = I16# (intToInt16# n)
@@ -336,8 +336,8 @@ toInt64  n = I64# n
 toWord64 n = W64# n
 #endif
 #else
-toInt64  n = I64# (intToInt64# n)
-toWord64 n = W64# (wordToWord64# n)
+toInt64  n = I64# ( n)
+toWord64 n = W64# (n)
 #endif
 #else
 toInt8   n = I8#  n
@@ -987,7 +987,7 @@ type ByteOffset = Int64
 peekByteOffset :: Decoder s ByteOffset
 peekByteOffset = Decoder (\k -> return (PeekByteOffset (\off# -> k (I64#
 #if MIN_VERSION_base(4,17,0)
-        (intToInt64# off#)
+        ( off#)
 #else
         off#
 #endif
