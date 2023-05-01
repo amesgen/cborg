@@ -1,9 +1,9 @@
 packages:
   cborg/
-  cbor-tool/
-  serialise/
-  binary-serialise-cbor/
-  cborg-json/
+  -- cbor-tool/
+  -- serialise/
+  -- binary-serialise-cbor/
+  -- cborg-json/
 
 -- Needed for serialise benchmarks
 allow-newer:
