@@ -1,11 +1,7 @@
 name: Other CI
 on:
   push:
-    branches:
-      - master
   pull_request:
-    branches:
-      - master
 jobs:
   i386:
     name: i386 - ${{ matrix.ghc }}

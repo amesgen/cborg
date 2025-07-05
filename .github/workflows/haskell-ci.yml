@@ -15,11 +15,7 @@
 name: Haskell-CI
 on:
   push:
-    branches:
-      - master
   pull_request:
-    branches:
-      - master
 jobs:
   linux:
     name: Haskell-CI - Linux - ${{ matrix.compiler }}
